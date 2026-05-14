@@ -13,6 +13,7 @@ const router = createRouter({
     { path: '/uke', component: UkeView },
     { path: '/geri', component: GeriView },
     { path: '/dachi', component: DachiView },
+    { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
 })
 
