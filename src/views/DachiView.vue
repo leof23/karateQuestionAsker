@@ -15,6 +15,7 @@
         <button class="mode-btn" :class="{ active: mode === 'list' }" @click="setMode('list')">List</button>
         <button class="mode-btn" :class="{ active: mode === 'random' }" @click="setMode('random')">Random</button>
       </div>
+      <button class="next-btn" :disabled="!canShowPrevious" @click="showPreviousCard">Previous</button>
       <button class="next-btn" @click="showNextCard">{{ nextButtonText }}</button>
     </div>
     <p class="technique-indicator" :class="{ success: showSuccessAnimation }" v-if="currentCard">
@@ -32,88 +33,26 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import FlipCard from '../components/FlipCard.vue'
+import { useTechniqueSession } from '../composables/useTechniqueSession'
 import dachiCsvRaw from '../../dachi.csv?raw'
 
 const router = useRouter()
 
-type DachiRow = {
-  position: number
-  question: string
-  answer: string
-}
-
-const dachiData = computed<DachiRow[]>(() => {
-  const lines = dachiCsvRaw.split(/\r?\n/).filter((line) => line.trim().length > 0)
-  return lines.slice(1).map((line) => {
-    const [position, name, description] = line.split(',')
-    return {
-      position: Number(position),
-      question: (name ?? '').trim(),
-      answer: (description ?? '').trim()
-    }
-  })
-})
-
-const dachiCards = computed(() => dachiData.value)
-const totalTechniques = computed(() => dachiCards.value.length)
-type ViewMode = 'list' | 'random'
-
-const mode = ref<ViewMode>('list')
-const currentIndex = ref(0)
-const cardRenderKey = ref(0)
-const techniqueNumber = ref(1)
-const showSuccessAnimation = ref(false)
-const isCompleted = ref(false)
-
-const currentCard = computed(() => {
-  if (dachiCards.value.length === 0) {
-    return null
-  }
-  return dachiCards.value[currentIndex.value]
-})
-
-const nextButtonText = computed(() => (isCompleted.value ? 'Replay' : 'Show Next Card'))
-
-const setMode = (nextMode: ViewMode) => {
-  mode.value = nextMode
-  currentIndex.value = 0
-  techniqueNumber.value = 1
-  showSuccessAnimation.value = false
-  isCompleted.value = false
-  cardRenderKey.value += 1
-}
-
-const showNextCard = () => {
-  if (dachiCards.value.length === 0) {
-    return
-  }
-  if (isCompleted.value) {
-    isCompleted.value = false
-    showSuccessAnimation.value = false
-  }
-  if (mode.value === 'list') {
-    currentIndex.value = (currentIndex.value + 1) % dachiCards.value.length
-  } else {
-    if (dachiCards.value.length === 1) {
-      currentIndex.value = 0
-    } else {
-      let nextIndex = currentIndex.value
-      while (nextIndex === currentIndex.value) {
-        nextIndex = Math.floor(Math.random() * dachiCards.value.length)
-      }
-      currentIndex.value = nextIndex
-    }
-  }
-  techniqueNumber.value = (techniqueNumber.value % dachiCards.value.length) + 1
-  if (techniqueNumber.value === totalTechniques.value) {
-    showSuccessAnimation.value = true
-    isCompleted.value = true
-  }
-  cardRenderKey.value += 1
-}
+const {
+  mode,
+  currentCard,
+  cardRenderKey,
+  techniqueNumber,
+  showSuccessAnimation,
+  totalTechniques,
+  nextButtonText,
+  canShowPrevious,
+  setMode,
+  showNextCard,
+  showPreviousCard
+} = useTechniqueSession(dachiCsvRaw)
 </script>
 
 <style scoped>
@@ -217,6 +156,11 @@ const showNextCard = () => {
 .next-btn:hover {
   border-color: #94a3b8;
   background: #f8fafc;
+}
+
+.next-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .technique-indicator {

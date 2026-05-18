@@ -1,13 +1,13 @@
 <template>
-  <div class="uke-view">
+  <div class="karatedowasa-view">
     <div class="header">
       <button class="back-btn" @click="router.push('/')">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
         Back
       </button>
       <div class="title-container">
-        <h2 class="view-title">Uke Wasa</h2>
-        <span class="view-subtitle">Blocking Techniques</span>
+        <h2 class="view-title">Karate Do Wasa</h2>
+        <span class="view-subtitle">Technique Categories</span>
       </div>
     </div>
     <div class="controls">
@@ -36,7 +36,7 @@
 import { useRouter } from 'vue-router'
 import FlipCard from '../components/FlipCard.vue'
 import { useTechniqueSession } from '../composables/useTechniqueSession'
-import ukeCsvRaw from '../../uke.csv?raw'
+import karatedowasaCsvRaw from '../../karatedowasa.csv?raw'
 
 const router = useRouter()
 
@@ -52,11 +52,11 @@ const {
   setMode,
   showNextCard,
   showPreviousCard
-} = useTechniqueSession(ukeCsvRaw)
+} = useTechniqueSession(karatedowasaCsvRaw)
 </script>
 
 <style scoped>
-.uke-view {
+.karatedowasa-view {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;

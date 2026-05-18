@@ -21,6 +21,26 @@
         <span class="card-title">Dachi Wasa</span>
         <span class="card-desc">Stances</span>
       </button>
+      <button class="category-card" @click="router.push('/vocabulary')">
+        <span class="card-title">Vocabulary</span>
+        <span class="card-desc">Karate Vocabulary</span>
+      </button>
+      <button class="category-card" @click="router.push('/ibukiwasa')">
+        <span class="card-title">Ibuki Wasa</span>
+        <span class="card-desc">Breathing Techniques</span>
+      </button>
+      <button class="category-card" @click="router.push('/karatedowasa')">
+        <span class="card-title">Karate Do Wasa</span>
+        <span class="card-desc">Technique Categories</span>
+      </button>
+      <button class="category-card" @click="router.push('/kumitewasa')">
+        <span class="card-title">Kumite Wasa</span>
+        <span class="card-desc">Sparring Techniques</span>
+      </button>
+      <button class="category-card" @click="router.push('/unsoku')">
+        <span class="card-title">Unsoku</span>
+        <span class="card-desc">Footwork Concepts</span>
+      </button>
     </div>
   </div>
 </template>

@@ -4,6 +4,11 @@ import ZukiView from '../views/ZukiView.vue'
 import UkeView from '../views/UkeView.vue'
 import GeriView from '../views/GeriView.vue'
 import DachiView from '../views/DachiView.vue'
+import VocabularyView from '../views/VocabularyView.vue'
+import IbukiwasaView from '../views/IbukiwasaView.vue'
+import KaratedowasaView from '../views/KaratedowasaView.vue'
+import KumitewasaView from '../views/KumitewasaView.vue'
+import UnsokuView from '../views/UnsokuView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -13,6 +18,12 @@ const router = createRouter({
     { path: '/uke', component: UkeView },
     { path: '/geri', component: GeriView },
     { path: '/dachi', component: DachiView },
+    { path: '/vocabulary', component: VocabularyView },
+    { path: '/ibukiwasa', component: IbukiwasaView },
+    { path: '/karatedowasa', component: KaratedowasaView },
+    { path: '/kumitewasa', component: KumitewasaView },
+    { path: '/unsoku', component: UnsokuView },
+    { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
 })
 
