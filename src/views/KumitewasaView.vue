@@ -1,13 +1,13 @@
 <template>
-  <div class="dachi-view">
+  <div class="kumitewasa-view">
     <div class="header">
       <button class="back-btn" @click="router.push('/')">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
         {{ t('common.back') }}
       </button>
       <div class="title-container">
-        <h2 class="view-title">{{ t('home.cards.dachi.title') }}</h2>
-        <span class="view-subtitle">{{ t('home.cards.dachi.desc') }}</span>
+        <h2 class="view-title">{{ t('home.cards.kumitewasa.title') }}</h2>
+        <span class="view-subtitle">{{ t('home.cards.kumitewasa.desc') }}</span>
       </div>
     </div>
     <div class="controls">
@@ -37,7 +37,7 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import FlipCard from '../components/FlipCard.vue'
 import { useTechniqueSession } from '../composables/useTechniqueSession'
-import dachiCsvRaw from '../../dachi.csv?raw'
+import kumitewasaCsvRaw from '../../kumitewasa.csv?raw'
 
 const { t } = useI18n({ useScope: 'global' })
 const router = useRouter()
@@ -54,11 +54,11 @@ const {
   setMode,
   showNextCard,
   showPreviousCard
-} = useTechniqueSession(dachiCsvRaw)
+} = useTechniqueSession(kumitewasaCsvRaw)
 </script>
 
 <style scoped>
-.dachi-view {
+.kumitewasa-view {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;

@@ -67,6 +67,8 @@ export const useTechniqueSession = (csvRaw: string) => {
   const showSuccessAnimation = ref(false)
   const isCompleted = ref(false)
   const remainingRandomIndices = ref<number[]>([])
+  const historyIndices = ref<number[]>([0])
+  const historyPointer = ref(0)
 
   const currentCard = computed(() => {
     if (cards.value.length === 0) {
@@ -76,7 +78,8 @@ export const useTechniqueSession = (csvRaw: string) => {
     return cards.value[currentIndex.value]
   })
 
-  const nextButtonText = computed(() => (isCompleted.value ? 'Replay' : 'Show Next Card'))
+  const nextButtonKey = computed(() => (isCompleted.value ? 'common.replay' : 'common.showNextCard'))
+  const canShowPrevious = computed(() => historyPointer.value > 0)
 
   const setMode = (nextMode: ViewMode) => {
     mode.value = nextMode
@@ -85,6 +88,8 @@ export const useTechniqueSession = (csvRaw: string) => {
     showSuccessAnimation.value = false
     isCompleted.value = false
     remainingRandomIndices.value = []
+    historyIndices.value = [0]
+    historyPointer.value = 0
     cardRenderKey.value += 1
   }
 
@@ -98,21 +103,34 @@ export const useTechniqueSession = (csvRaw: string) => {
       showSuccessAnimation.value = false
     }
 
-    if (mode.value === 'list') {
-      currentIndex.value = (currentIndex.value + 1) % cards.value.length
+    let nextIndex = currentIndex.value
+    const hasForwardHistory = historyPointer.value < historyIndices.value.length - 1
+
+    if (hasForwardHistory) {
+      historyPointer.value += 1
+      nextIndex = historyIndices.value[historyPointer.value]
     } else {
-      if (remainingRandomIndices.value.length === 0) {
-        remainingRandomIndices.value = cards.value
-          .map((_, index) => index)
-          .filter((index) => index !== currentIndex.value)
+      if (mode.value === 'list') {
+        nextIndex = (currentIndex.value + 1) % cards.value.length
+      } else {
+        if (remainingRandomIndices.value.length === 0) {
+          remainingRandomIndices.value = cards.value
+            .map((_, index) => index)
+            .filter((index) => index !== currentIndex.value)
+        }
+
+        if (remainingRandomIndices.value.length > 0) {
+          const randomPoolIndex = Math.floor(Math.random() * remainingRandomIndices.value.length)
+          const [selectedIndex] = remainingRandomIndices.value.splice(randomPoolIndex, 1)
+          nextIndex = selectedIndex
+        }
       }
 
-      if (remainingRandomIndices.value.length > 0) {
-        const randomPoolIndex = Math.floor(Math.random() * remainingRandomIndices.value.length)
-        const [nextIndex] = remainingRandomIndices.value.splice(randomPoolIndex, 1)
-        currentIndex.value = nextIndex
-      }
+      historyIndices.value.push(nextIndex)
+      historyPointer.value += 1
     }
+
+    currentIndex.value = nextIndex
 
     techniqueNumber.value = (techniqueNumber.value % cards.value.length) + 1
 
@@ -125,6 +143,19 @@ export const useTechniqueSession = (csvRaw: string) => {
     cardRenderKey.value += 1
   }
 
+  const showPreviousCard = () => {
+    if (cards.value.length === 0 || historyPointer.value === 0) {
+      return
+    }
+
+    historyPointer.value -= 1
+    currentIndex.value = historyIndices.value[historyPointer.value]
+    techniqueNumber.value = techniqueNumber.value <= 1 ? cards.value.length : techniqueNumber.value - 1
+    showSuccessAnimation.value = false
+    isCompleted.value = false
+    cardRenderKey.value += 1
+  }
+
   return {
     mode,
     currentCard,
@@ -132,8 +163,10 @@ export const useTechniqueSession = (csvRaw: string) => {
     techniqueNumber,
     showSuccessAnimation,
     totalTechniques,
-    nextButtonText,
+    nextButtonKey,
+    canShowPrevious,
     setMode,
-    showNextCard
+    showNextCard,
+    showPreviousCard
   }
 }
