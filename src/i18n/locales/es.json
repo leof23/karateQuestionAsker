@@ -1,0 +1,43 @@
+{
+  "common": {
+    "language": "Idioma",
+    "back": "Volver",
+    "list": "Lista",
+    "random": "Aleatorio",
+    "previous": "Anterior",
+    "completed": "Completado",
+    "showNextCard": "Mostrar siguiente tarjeta",
+    "replay": "Repetir",
+    "techniqueNumberOf": "Técnica número {current} de {total}"
+  },
+  "languages": {
+    "english": "Inglés",
+    "spanish": "Español"
+  },
+  "flipCard": {
+    "question": "Pregunta",
+    "answer": "Respuesta",
+    "clickToFlip": "Haz clic para girar"
+  },
+  "home": {
+    "title": "Teoria de Karate",
+    "subtitle": "Selecciona una categoría para practicar",
+    "cards": {
+      "vocabulary": { "title": "Vocabulario", "desc": "Vocabulario de Karate" },
+      "karatedowasa": { "title": "Karate Do Wasa", "desc": "Categorías de Técnicas" },
+      "zuki": { "title": "Zuki Wasa", "desc": "Técnicas de Golpe" },
+      "uke": { "title": "Uke Wasa", "desc": "Técnicas de Bloqueo" },
+      "geri": { "title": "Geri Wasa", "desc": "Técnicas de Patada" },
+      "ibukiwasa": { "title": "Ibuki Wasa", "desc": "Técnicas de Respiración" },
+      "kumitewasa": { "title": "Kumite Wasa", "desc": "Técnicas de Combate" },
+      "dachi": { "title": "Dachi Wasa", "desc": "Posturas" },
+      "unsoku": { "title": "Unsoku", "desc": "Conceptos de Desplazamiento" },
+      "numbers": { "title": "Números", "desc": "Números japoneses 1–20" },
+      "dojokun": { "title": "Dojo Kun", "desc": "Dojo Kun" }
+    }
+  },
+  "numbers": {
+    "title": "Números",
+    "subtitle": "Números japoneses del 1 al 20"
+  }
+}

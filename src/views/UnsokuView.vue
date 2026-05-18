@@ -3,24 +3,24 @@
     <div class="header">
       <button class="back-btn" @click="router.push('/')">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        Back
+        {{ t('common.back') }}
       </button>
       <div class="title-container">
-        <h2 class="view-title">Unsoku</h2>
-        <span class="view-subtitle">Footwork Concepts</span>
+        <h2 class="view-title">{{ t('home.cards.unsoku.title') }}</h2>
+        <span class="view-subtitle">{{ t('home.cards.unsoku.desc') }}</span>
       </div>
     </div>
     <div class="controls">
       <div class="mode-toggle">
-        <button class="mode-btn" :class="{ active: mode === 'list' }" @click="setMode('list')">List</button>
-        <button class="mode-btn" :class="{ active: mode === 'random' }" @click="setMode('random')">Random</button>
+        <button class="mode-btn" :class="{ active: mode === 'list' }" @click="setMode('list')">{{ t('common.list') }}</button>
+        <button class="mode-btn" :class="{ active: mode === 'random' }" @click="setMode('random')">{{ t('common.random') }}</button>
       </div>
-      <button class="next-btn" :disabled="!canShowPrevious" @click="showPreviousCard">Previous</button>
-      <button class="next-btn" @click="showNextCard">{{ nextButtonText }}</button>
+      <button class="next-btn" :disabled="!canShowPrevious" @click="showPreviousCard">{{ t('common.previous') }}</button>
+      <button class="next-btn" @click="showNextCard">{{ t(nextButtonKey) }}</button>
     </div>
     <p class="technique-indicator" :class="{ success: showSuccessAnimation }" v-if="currentCard">
-      Technique Number {{ techniqueNumber }} of {{ totalTechniques }}
-      <span class="success-chip" v-if="showSuccessAnimation">Completed</span>
+      {{ t('common.techniqueNumberOf', { current: techniqueNumber, total: totalTechniques }) }}
+      <span class="success-chip" v-if="showSuccessAnimation">{{ t('common.completed') }}</span>
     </p>
     <div class="content" v-if="currentCard">
       <FlipCard
@@ -33,11 +33,13 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import FlipCard from '../components/FlipCard.vue'
 import { useTechniqueSession } from '../composables/useTechniqueSession'
 import unsokuCsvRaw from '../../unsoku.csv?raw'
 
+const { t } = useI18n({ useScope: 'global' })
 const router = useRouter()
 
 const {
@@ -47,7 +49,7 @@ const {
   techniqueNumber,
   showSuccessAnimation,
   totalTechniques,
-  nextButtonText,
+  nextButtonKey,
   canShowPrevious,
   setMode,
   showNextCard,

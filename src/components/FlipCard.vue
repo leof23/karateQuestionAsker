@@ -2,15 +2,13 @@
   <div class="flip-card-wrapper" @click="isFlipped = !isFlipped">
     <div class="flip-card" :class="{ 'is-flipped': isFlipped }">
       <div class="flip-card-inner">
-        <!-- Front -->
         <div class="flip-card-face flip-card-front">
-          <div class="card-badge">Question</div>
+          <div class="card-badge">{{ t('flipCard.question') }}</div>
           <p class="card-content">{{ question }}</p>
-          <div class="card-hint">Click to flip</div>
+          <div class="card-hint">{{ t('flipCard.clickToFlip') }}</div>
         </div>
-        <!-- Back -->
         <div class="flip-card-face flip-card-back">
-          <div class="card-badge">Answer</div>
+          <div class="card-badge">{{ t('flipCard.answer') }}</div>
           <p class="card-content">{{ answer }}</p>
         </div>
       </div>
@@ -20,12 +18,14 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 defineProps<{
   question: string
   answer: string
 }>()
 
+const { t } = useI18n({ useScope: 'global' })
 const isFlipped = ref(false)
 </script>
 

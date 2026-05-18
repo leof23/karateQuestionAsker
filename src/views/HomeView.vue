@@ -1,52 +1,65 @@
 <template>
   <div class="home">
+    <LanguageSelector />
     <div class="header">
-      <h1 class="title">Karate Knowledge</h1>
-      <p class="subtitle">Select a category to practice</p>
+      <h1 class="title">{{ t('home.title') }}</h1>
+      <p class="subtitle">{{ t('home.subtitle') }}</p>
     </div>
     <div class="grid">
-      <button class="category-card" @click="router.push('/zuki')">
-        <span class="card-title">Zuki Wasa</span>
-        <span class="card-desc">Punching Techniques</span>
-      </button>
-      <button class="category-card" @click="router.push('/uke')">
-        <span class="card-title">Uke Wasa</span>
-        <span class="card-desc">Blocking Techniques</span>
-      </button>
-      <button class="category-card" @click="router.push('/geri')">
-        <span class="card-title">Geri Wasa</span>
-        <span class="card-desc">Kicking Techniques</span>
-      </button>
-      <button class="category-card" @click="router.push('/dachi')">
-        <span class="card-title">Dachi Wasa</span>
-        <span class="card-desc">Stances</span>
-      </button>
       <button class="category-card" @click="router.push('/vocabulary')">
-        <span class="card-title">Vocabulary</span>
-        <span class="card-desc">Karate Vocabulary</span>
-      </button>
-      <button class="category-card" @click="router.push('/ibukiwasa')">
-        <span class="card-title">Ibuki Wasa</span>
-        <span class="card-desc">Breathing Techniques</span>
+        <span class="card-title">{{ t('home.cards.vocabulary.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.vocabulary.desc') }}</span>
       </button>
       <button class="category-card" @click="router.push('/karatedowasa')">
-        <span class="card-title">Karate Do Wasa</span>
-        <span class="card-desc">Technique Categories</span>
+        <span class="card-title">{{ t('home.cards.karatedowasa.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.karatedowasa.desc') }}</span>
+      </button>
+      <button class="category-card" @click="router.push('/zuki')">
+        <span class="card-title">{{ t('home.cards.zuki.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.zuki.desc') }}</span>
+      </button>
+      <button class="category-card" @click="router.push('/uke')">
+        <span class="card-title">{{ t('home.cards.uke.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.uke.desc') }}</span>
+      </button>
+      <button class="category-card" @click="router.push('/geri')">
+        <span class="card-title">{{ t('home.cards.geri.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.geri.desc') }}</span>
+      </button>
+      <button class="category-card" @click="router.push('/ibukiwasa')">
+        <span class="card-title">{{ t('home.cards.ibukiwasa.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.ibukiwasa.desc') }}</span>
       </button>
       <button class="category-card" @click="router.push('/kumitewasa')">
-        <span class="card-title">Kumite Wasa</span>
-        <span class="card-desc">Sparring Techniques</span>
+        <span class="card-title">{{ t('home.cards.kumitewasa.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.kumitewasa.desc') }}</span>
+      </button>
+      <button class="category-card" @click="router.push('/dachi')">
+        <span class="card-title">{{ t('home.cards.dachi.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.dachi.desc') }}</span>
       </button>
       <button class="category-card" @click="router.push('/unsoku')">
-        <span class="card-title">Unsoku</span>
-        <span class="card-desc">Footwork Concepts</span>
+        <span class="card-title">{{ t('home.cards.unsoku.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.unsoku.desc') }}</span>
+      </button>
+      <button class="category-card" @click="router.push('/numbers')">
+        <span class="card-title">{{ t('home.cards.numbers.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.numbers.desc') }}</span>
+      </button>
+      <button class="category-card" @click="router.push('/dojokun')">
+        <span class="card-title">{{ t('home.cards.dojokun.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.dojokun.desc') }}</span>
       </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
+import LanguageSelector from '../components/LanguageSelector.vue'
+
+const { t } = useI18n({ useScope: 'global' })
 const router = useRouter()
 </script>
 
