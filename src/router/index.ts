@@ -11,6 +11,7 @@ import KumitewasaView from '../views/KumitewasaView.vue'
 import UnsokuView from '../views/UnsokuView.vue'
 import NumbersView from '../views/NumbersView.vue'
 import DojokunView from '../views/DojokunView.vue'
+import AnimalsView from '../views/AnimalsView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -27,6 +28,7 @@ const router = createRouter({
     { path: '/unsoku', component: UnsokuView },
     { path: '/numbers', component: NumbersView },
     { path: '/dojokun', component: DojokunView },
+    { path: '/animals', component: AnimalsView },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
 })

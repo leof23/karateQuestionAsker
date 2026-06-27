@@ -50,6 +50,10 @@
         <span class="card-title">{{ t('home.cards.dojokun.title') }}</span>
         <span class="card-desc">{{ t('home.cards.dojokun.desc') }}</span>
       </button>
+      <button class="category-card" @click="router.push('/animals')">
+        <span class="card-title">{{ t('home.cards.animals.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.animals.desc') }}</span>
+      </button>
     </div>
   </div>
 </template>
