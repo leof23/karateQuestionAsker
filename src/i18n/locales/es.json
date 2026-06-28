@@ -34,7 +34,8 @@
       "unsoku": { "title": "Unsoku", "desc": "Conceptos de Desplazamiento" },
       "numbers": { "title": "Números", "desc": "Números japoneses 1–20" },
       "dojokun": { "title": "Dojo Kun", "desc": "Dojo Kun" },
-      "animals": { "title": "Animales", "desc": "Animales del Karate" }
+      "animals": { "title": "Animales", "desc": "Animales del Karate" },
+      "emblem": { "title": "Emblema", "desc": "Emblema del Karate" }
     }
   },
   "numbers": {

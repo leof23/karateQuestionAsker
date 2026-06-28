@@ -34,7 +34,8 @@
       "unsoku": { "title": "Unsoku", "desc": "Footwork Concepts" },
       "numbers": { "title": "Numbers", "desc": "Japanese Numbers 1–20" },
       "dojokun": { "title": "Dojo Kun", "desc": "Dojo Kun" },
-      "animals": { "title": "Animals", "desc": "Karate Animals" }
+      "animals": { "title": "Animals", "desc": "Karate Animals" },
+      "emblem": { "title": "Emblem", "desc": "Karate Emblem" }
     }
   },
   "numbers": {
