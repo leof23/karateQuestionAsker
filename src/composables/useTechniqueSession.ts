@@ -1,4 +1,5 @@
 import { computed, ref } from 'vue'
+import { parseCsvRows } from './parseCsv'
 
 type ViewMode = 'list' | 'random'
 
@@ -8,43 +9,10 @@ type TechniqueCard = {
   answer: string
 }
 
-const parseCsvLine = (line: string) => {
-  const values: string[] = []
-  let current = ''
-  let isQuoted = false
-
-  for (let index = 0; index < line.length; index += 1) {
-    const char = line[index]
-
-    if (char === '"') {
-      const nextChar = line[index + 1]
-      if (isQuoted && nextChar === '"') {
-        current += '"'
-        index += 1
-      } else {
-        isQuoted = !isQuoted
-      }
-      continue
-    }
-
-    if (char === ',' && !isQuoted) {
-      values.push(current)
-      current = ''
-      continue
-    }
-
-    current += char
-  }
-
-  values.push(current)
-  return values
-}
-
 const parseTechniqueCards = (csvRaw: string) => {
-  const lines = csvRaw.split(/\r?\n/).filter((line) => line.trim().length > 0)
+  const rows = parseCsvRows(csvRaw)
 
-  return lines.slice(1).map((line, index) => {
-    const columns = parseCsvLine(line)
+  return rows.slice(1).map((columns, index) => {
     const [position = '', name = '', ...descriptionParts] = columns
     const parsedPosition = Number(position.trim())
 

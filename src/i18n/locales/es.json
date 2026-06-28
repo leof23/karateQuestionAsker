@@ -35,7 +35,17 @@
       "numbers": { "title": "Números", "desc": "Números japoneses 1–20" },
       "dojokun": { "title": "Dojo Kun", "desc": "Dojo Kun" },
       "animals": { "title": "Animales", "desc": "Animales del Karate" },
-      "emblem": { "title": "Emblema", "desc": "Emblema del Karate" }
+      "emblem": { "title": "Emblema", "desc": "Emblema del Karate" },
+      "kataNames": { "title": "Nombres de Katas", "desc": "Nombres de Katas y Traducciones" }
+    }
+  },
+  "kataNames": {
+    "title": "Nombres de Katas",
+    "subtitle": "Número WKF, nombre y traducción",
+    "columns": {
+      "wkf": "Número WKF",
+      "name": "Nombre del kata",
+      "translation": "Traducción del nombre"
     }
   },
   "numbers": {

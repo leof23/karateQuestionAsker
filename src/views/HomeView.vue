@@ -58,6 +58,10 @@
         <span class="card-title">{{ t('home.cards.emblem.title') }}</span>
         <span class="card-desc">{{ t('home.cards.emblem.desc') }}</span>
       </button>
+      <button class="category-card" @click="router.push('/kata-names')">
+        <span class="card-title">{{ t('home.cards.kataNames.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.kataNames.desc') }}</span>
+      </button>
     </div>
   </div>
 </template>
