@@ -33,7 +33,19 @@
       "dachi": { "title": "Dachi Wasa", "desc": "Stances" },
       "unsoku": { "title": "Unsoku", "desc": "Footwork Concepts" },
       "numbers": { "title": "Numbers", "desc": "Japanese Numbers 1–20" },
-      "dojokun": { "title": "Dojo Kun", "desc": "Dojo Kun" }
+      "dojokun": { "title": "Dojo Kun", "desc": "Dojo Kun" },
+      "animals": { "title": "Animals", "desc": "Karate Animals" },
+      "emblem": { "title": "Emblem", "desc": "Karate Emblem" },
+      "kataNames": { "title": "Kata Names", "desc": "Kata Names & Translations" }
+    }
+  },
+  "kataNames": {
+    "title": "Kata Names",
+    "subtitle": "WKF number, name and translation",
+    "columns": {
+      "wkf": "WKF Number",
+      "name": "Kata Name",
+      "translation": "Name Translation"
     }
   },
   "numbers": {

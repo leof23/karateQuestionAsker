@@ -50,6 +50,18 @@
         <span class="card-title">{{ t('home.cards.dojokun.title') }}</span>
         <span class="card-desc">{{ t('home.cards.dojokun.desc') }}</span>
       </button>
+      <button class="category-card" @click="router.push('/animals')">
+        <span class="card-title">{{ t('home.cards.animals.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.animals.desc') }}</span>
+      </button>
+      <button class="category-card" @click="router.push('/emblem')">
+        <span class="card-title">{{ t('home.cards.emblem.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.emblem.desc') }}</span>
+      </button>
+      <button class="category-card" @click="router.push('/kata-names')">
+        <span class="card-title">{{ t('home.cards.kataNames.title') }}</span>
+        <span class="card-desc">{{ t('home.cards.kataNames.desc') }}</span>
+      </button>
     </div>
   </div>
 </template>
