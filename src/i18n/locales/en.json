@@ -36,7 +36,8 @@
       "dojokun": { "title": "Dojo Kun", "desc": "Dojo Kun" },
       "animals": { "title": "Animals", "desc": "Karate Animals" },
       "emblem": { "title": "Emblem", "desc": "Karate Emblem" },
-      "kataNames": { "title": "Kata Names", "desc": "Kata Names & Translations" }
+      "kataNames": { "title": "Kata Names", "desc": "Kata Names & Translations" },
+      "bodyParts": { "title": "Body Parts", "desc": "Karate Body Parts" }
     }
   },
   "kataNames": {

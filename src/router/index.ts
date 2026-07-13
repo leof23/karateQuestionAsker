@@ -14,6 +14,7 @@ import DojokunView from '../views/DojokunView.vue'
 import AnimalsView from '../views/AnimalsView.vue'
 import EmblemView from '../views/EmblemView.vue'
 import KataNamesView from '../views/KataNamesView.vue'
+import BodyPartsView from '../views/BodyPartsView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -33,6 +34,7 @@ const router = createRouter({
     { path: '/animals', component: AnimalsView },
     { path: '/emblem', component: EmblemView },
     { path: '/kata-names', component: KataNamesView },
+    { path: '/body-parts', component: BodyPartsView },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
 })

@@ -36,7 +36,8 @@
       "dojokun": { "title": "Dojo Kun", "desc": "Dojo Kun" },
       "animals": { "title": "Animales", "desc": "Animales del Karate" },
       "emblem": { "title": "Emblema", "desc": "Emblema del Karate" },
-      "kataNames": { "title": "Nombres de Katas", "desc": "Nombres de Katas y Traducciones" }
+      "kataNames": { "title": "Nombres de Katas", "desc": "Nombres de Katas y Traducciones" },
+      "bodyParts": { "title": "Partes del Cuerpo", "desc": "Partes del Cuerpo en Karate" }
     }
   },
   "kataNames": {
